@@ -11,3 +11,28 @@
 .width-75 {
   width: 75%!important;
 }
+
+.post-box {
+  max-height: 270px;
+  overflow-y: auto;
+}
+
+.post-box-inner h4{
+  font-size: 18px;
+}
+
+.offline {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.online {
+  height: 10px;
+  width: 10px;
+  background-color: #00ff2b;
+  border-radius: 50%;
+  display: inline-block;
+}
