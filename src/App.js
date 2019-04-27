@@ -57,18 +57,22 @@ function App() {
 							<Button variant="outline-success">Search</Button>
 						</Form>
 						<Row className="mt-1 text-center">
-							<Col>
+							<div className="user-status">
+							<div className="user-avtar">
 								<Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-								<span class="online"></span>
-							</Col>
-							<Col>
+								<span class="status-user-inner online"></span>
+							</div>
+								
+								<div>rahul kashyap</div>
+							</div>
+							<div className="user-status">
 								<Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-								<span class="online"></span>
-							</Col>
-							<Col>
+								<span class="status-user-inner online"></span>
+							</div>
+							<div className="user-status">
 								<Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-								<span class="offline"></span>
-							</Col>
+								<span class="status-user-inner offline"></span>
+							</div>
 						</Row>
 						<Row className="mt-1 text-center">
 							<Col>

@@ -36,3 +36,26 @@
   border-radius: 50%;
   display: inline-block;
 }
+
+.user-status {
+  width: 33.3%;
+  padding: 0 5px;
+  margin-bottom: 10px;
+}
+.user-avtar{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+.user-status img{
+  max-width: 100%;
+  max-height: 100%;
+}
+.status-user-inner{
+  position: absolute;
+  right: 0px;
+  top:0px;
+}
