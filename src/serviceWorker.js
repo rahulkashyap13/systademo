@@ -32,7 +32,7 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      const swUrl = `${ process.env.PUBLIC_URL }/service-worker.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
@@ -40,7 +40,9 @@ export function register(config) {
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
+        // eslint-disable-next-line no-undef
         navigator.serviceWorker.ready.then(() => {
+          // eslint-disable-next-line no-undef
           console.log(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://bit.ly/CRA-PWA'
@@ -100,6 +102,7 @@ function registerValidSW(swUrl, config) {
 
 function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
+  // eslint-disable-next-line no-undef
   fetch(swUrl)
     .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.
@@ -125,6 +128,16 @@ function checkValidServiceWorker(swUrl, config) {
       );
     });
 }
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.userChoice.then(function(choiceResult){
+      console.log(choiceResult.outcome);
+      if(choiceResult.outcome == 'dismissed'){
+          console.log('User cancelled home screen install');
+      }else{
+          console.log('User added to home screen');
+      }
+  });
+});
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
