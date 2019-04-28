@@ -1,0 +1,23 @@
+.login-wrap {
+    padding: 190px 60px 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-box {
+    width: 420px;
+    border: 2px solid #eee;
+    padding: 29px;
+    background: white;
+}
+
+.login-page {
+    background-color: #2a3f4e;
+    min-height: 655px;
+    height: 100%;
+}
+
+label.form-label {
+    font-size: 16px;
+    font-weight: bold;
+}
