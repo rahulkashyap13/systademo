@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "./../../store/actions/Login";
-import { Link } from "react-router-dom";
 import Validator from "js-object-validation";
 import { Form, Button } from 'react-bootstrap';
 import { LoginValidations, LoginValidationsMessaages } from "../../validations";
@@ -19,9 +18,6 @@ class LoginPage extends Component {
 
   componentDidMount() {
    // const localStorage.getItem('user')
-   console.log("this.props");
-   console.log(this.props);
-   console.log(this.props);
     const storageSession=JSON.parse(localStorage.getItem('user'));
     if(storageSession) {
       this.props.history.push("/"+storageSession.token);

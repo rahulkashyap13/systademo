@@ -10,7 +10,7 @@ class Sidebar extends Component {
         <div className="mt-3">
             <div>
                 {/* <Avatar size="150" src={ profileInfo.profileInfo.userImage } /> */}
-                <p className="text-center"><strong>{ profileInfo.profileInfo.description }</strong></p>
+                {/* <p className="text-center"><strong>{ profileInfo.profileInfo.description }</strong></p> */}
             </div>
         
             <Nav defaultActiveKey="/home" className="flex-column">

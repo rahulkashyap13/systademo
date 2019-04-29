@@ -11,15 +11,18 @@ export function getPosts(data) {
         params: data
       })
       .then(response => {
-          let hasMore = false;
-          if(response.data.length > 0 ) {
-            hasMore = true
-          }
-          else {
-              hasMore = false;
-          }
-          response.hasMore = hasMore;
-        dispatch(success(response));
+        let hasMore = false;
+        if(response.data.length > 0 ) {
+          hasMore = true
+        }
+        else {
+          hasMore = false;
+        }
+        const dataSave = {};
+        dataSave.hasMore = hasMore;
+        dataSave.totalPost = response.headers[ "x-total-count" ];
+        dataSave.postData = stateData.postInfo.postData && data._page !== 1 ? stateData.postInfo.postData.concat(response.data): response.data;
+        dispatch(success(dataSave));
       })
       .catch(error => {
         if (error.response && error.response.data.responseCode === 401) {
@@ -34,10 +37,10 @@ export function getPosts(data) {
   function request() {
     return { type: actionTypes.BLOGINFO_REQUEST };
   }
-  function success(postInfo, hasMore) {
+  function success(postInfo) {
     return { type: actionTypes.BLOGINFO_SUCCESS, postInfo};
   }
-  function failure(error, hasMore) {
+  function failure(error) {
     return { type: actionTypes.BLOGINFO_FAILURE, error };
   }
 }
