@@ -3,7 +3,7 @@ import { Button, Form, FormControl } from 'react-bootstrap';
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { connect } from "react-redux";
 import { getPosts } from "./../../store/actions/BlogInfo";
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from 'react-infinite-scroll-component';
 class User extends Component {
     constructor(props) {
         super(props);
@@ -15,13 +15,13 @@ class User extends Component {
     }
     componentDidMount() {
         const data = {
-            _page: 1,
-            _limit: 3,
+            _page: this.state._page,
+            _limit: this.state._limit,
         }
         this.props.postInfo(data);
     }
 
-    fetchMoreData() {
+    fetchMoreData = () => {
         const pageValue = parseInt(this.state._page) + 1;
         this.setState({
             _page: pageValue
@@ -30,7 +30,9 @@ class User extends Component {
             _page: pageValue,
             _limit: 3,
         }
-        this.props.postInfo(data);           
+        setTimeout(() => {
+            this.props.postInfo(data);         
+        }, 500);
     };
 
     inputHandler = (event) => {
@@ -47,8 +49,9 @@ class User extends Component {
             _limit: 3,
             title: this.state.search,
         }
-        this.props.postInfo(data);    
-        
+        setTimeout(() => {
+            this.props.postInfo(data);         
+        }, 500);
     }
 
 	render() {
@@ -63,29 +66,10 @@ class User extends Component {
                     </Form>						
                 </div>
                 <div className=" mt-3">
-                <div style={ { height:"700px" , overflow: "auto" } }>
+                <>
                 <InfiniteScroll
-                    pageStart={ 1 }
-                    loadMore={ this.fetchMoreData.bind(this) }
-                    hasMore={ dataDisplay &&  dataDisplay.hasMore ? dataDisplay.hasMore: false }
-                    loader={ <div className="loader" key={ 0 }>Loading ...</div> }
-                    useWindow={ false }
-                    threshold={ 250 }
-                    isReverse ={ false }
-                >
-                    {   dataDisplay.postData && dataDisplay.postData.length ?
-                            dataDisplay.postData.map((item,index) => {
-                            // eslint-disable-next-line react/no-array-index-key
-                            return  <div className="post-box-inner" key={ index }>
-                                <h4>{item.title}</h4>
-                                <p>{item.description}</p>
-                            </div>
-                            })
-                            : null
-                        }
-                </InfiniteScroll>
-                {/* <InfiniteScroll
                         dataLength={ 50 }
+                        scrollThreshold="200px"
                         next={ this.fetchMoreData }
                         hasMore={ dataDisplay &&  dataDisplay.hasMore ? dataDisplay.hasMore: false }
                         loader={ <h4>Loading...</h4> }
@@ -105,8 +89,8 @@ class User extends Component {
                             })
                             : null
                         }
-                        </InfiniteScroll> */}
-                    </div>             
+                        </InfiniteScroll>
+                </>               
                 </div>
             </>
 		);

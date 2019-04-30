@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { Button, Navbar, Nav, Container, Row, Col, Form, FormControl, Spinner } from 'react-bootstrap';
 import Avatar from 'react-avatar';
 class Sidebar extends Component {
 
+  redirectToPage (redirect) {
+    this.props.history.push("/"+redirect);
+  }
   render() {
       const { profileInfo } = this.props;
     return (
@@ -14,8 +18,8 @@ class Sidebar extends Component {
             </div>
         
             <Nav defaultActiveKey="/home" className="flex-column">
-                <Nav.Link eventKey="link-1" href={ "/"+profileInfo.profileInfo.userName } className="left-menu">My Posts</Nav.Link>
-                <Nav.Link eventKey="link-2"  className="left-menu">Account Settings</Nav.Link>
+                <Nav.Link eventKey="link-1" onClick={ this.redirectToPage.bind(this,profileInfo.profileInfo.userName) } className="left-menu">My Posts</Nav.Link>
+                <Nav.Link eventKey="link-2" onClick={ this.redirectToPage.bind(this,profileInfo.profileInfo.userName+"/edit") }  className="left-menu" >Account Settings</Nav.Link>
             </Nav>
         </div>
     );
@@ -37,7 +41,7 @@ const mapStateToProps = state => {
 //       }
 //     };
 //   };
-  export default connect(
+  export default withRouter(connect(
     mapStateToProps,
     undefined
-  )(Sidebar);
+  )(Sidebar));
