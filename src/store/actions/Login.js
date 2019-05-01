@@ -18,7 +18,6 @@ export function login(data) {
           const authData = {
             token: responseData.userName
           };
-          console.log(responseData)
           localStorage.setItem("user", JSON.stringify(authData));
           toastr.success("Success", "Successfully Login");
           dispatch(success(authData));

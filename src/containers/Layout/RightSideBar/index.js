@@ -1,72 +1,41 @@
 import React, { Component } from 'react';
-import Avatar from 'react-avatar';
-import { Button, Navbar, Nav, Container, Row, Col, Form, FormControl, Spinner } from 'react-bootstrap';
-
-class Header extends Component {
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import RightSideBarPage from "../../../components/RightSideBarPage";
+import { getOtherUSers } from "./../../../store/actions/OtherUser";
+class RightSideBar extends Component {
+    componentDidMount() {
+        this.props.getOtherUser();
+    }
   render() {
+      const { otherUerInfo } = this.props;
+      console.log("otherUerInfo")
+      console.log(otherUerInfo)
+      console.log("otherUerInfo")
     return (
         <>
-            <div className="mt-3">
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2 width-75" />
-                    <Button variant="outline-success">Search</Button>
-                </Form>
-                <Row className="mt-1 text-center">
-                    <div className="user-status">
-                        <div className="user-avtar">
-                            <Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-                            <span className="status-user-inner online"></span>
-                        </div>
-                        
-                        <div>rahul kashyap</div>
-                    </div>
-                    <div className="user-status">
-                        <div className="user-avtar">
-                            <Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-                            <span className="status-user-inner online"></span>
-                        </div>
-                        
-                        <div>rahul kashyap</div>
-                    </div>
-                    <div className="user-status">
-                        <div className="user-avtar">
-                            <Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-                            <span className="status-user-inner online"></span>
-                        </div>
-                        
-                        <div>rahul kashyap</div>
-                    </div>
-                </Row>
-                <Row className="mt-1 text-center">
-                    <div className="user-status">
-                        <div className="user-avtar">
-                            <Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-                            <span className="status-user-inner offline"></span>
-                        </div>
-                        
-                        <div>rahul kashyap</div>
-                    </div>
-                    <div className="user-status">
-                        <div className="user-avtar">
-                            <Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-                            <span className="status-user-inner offline"></span>
-                        </div>
-                        
-                        <div>rahul kashyap</div>
-                    </div>
-                    <div className="user-status">
-                        <div className="user-avtar">
-                            <Avatar size="50" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-                            <span className="status-user-inner offline"></span>
-                        </div>
-                        
-                        <div>rahul kashyap</div>
-                    </div>
-                </Row>						
-            </div>
+           <RightSideBarPage 
+           otherUerInfo = { otherUerInfo }/>
         </>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+        otherUerInfo: state.OtherUserReducer
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+      getOtherUser: () => {
+        dispatch(getOtherUSers());
+      }
+    };
+  };
+  export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RightSideBar));

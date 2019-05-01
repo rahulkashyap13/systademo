@@ -1,24 +1,24 @@
 import { actionTypes } from "./../actions/actionTypes";
 
 const initialState = {
-	postInfo: {}
+	OtherUserInfo: {}
 };
 
-export const PostReducer = (state = initialState, action) => {
+export const OtherUserReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case actionTypes.BLOGINFO_REQUEST:
+		case actionTypes.OTHERUSER_REQUEST:
 			return {
 				...state
 			};
-		case actionTypes.BLOGINFO_SUCCESS:
+		case actionTypes.OTHERUSER_SUCCESS:
 			return {
 				...state,
-                postInfo:{
-					...state.postInfo,
-					...action.postInfo
+                OtherUserInfo:{
+					...state.OtherUserInfo,
+					...action.OtherUserInfo
 				}
 			};
-		case actionTypes.BLOGINFO_FAILURE:
+		case actionTypes.OTHERUSER_FAILURE:
 			return {
 				...state,
                 postInfo:{},
