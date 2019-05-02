@@ -2,6 +2,7 @@ import { push } from "react-router-redux";
 import { actionTypes } from "./actionTypes";
 import { toastr } from "react-redux-toastr";
 import axios from "axios";
+
 export function login(data) {
   return dispatch => {
     dispatch(request({ data }));
