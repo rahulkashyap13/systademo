@@ -29,6 +29,7 @@ class LoginPage extends Component {
     this.setState({
       errors: {}
     });
+    
     try {
       const { isValid, errors } = Validator(
         this.state,

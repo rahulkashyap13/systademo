@@ -58,7 +58,6 @@ class User extends Component {
 	render() {
         const { postInfo } = this.props.postInfoData;
         const dataDisplay = postInfo; 
-        console.log(dataDisplay)
 		return (
             <>
                 <div className="center-search-box">
