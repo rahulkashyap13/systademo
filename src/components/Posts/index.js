@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroller";
 
 class Posts extends Component {    
     constructor(props) {
@@ -29,9 +29,8 @@ class Posts extends Component {
             _page: pageValue,
             _limit: 5,
         }
-        setTimeout(() => {
-            this.props.loadMoreFun(data);         
-        }, 500);
+        console.log(data);
+        
     };
 
     inputHandler = (event) => {
@@ -55,7 +54,7 @@ class Posts extends Component {
     }
 	render() {        
         const { dataDisplay } = this.props;
-        console.log("dataDisplay.postData");
+        console.log(dataDisplay);
 		return (
             <>
                 <div className="center-search-box">
@@ -67,8 +66,8 @@ class Posts extends Component {
                 <div className=" mt-3">
                 <>
                 <InfiniteScroll
-                        dataLength={ 50 }
-                        next={ this.fetchMoreData }
+                            pageStart={ 0 }
+                            loadMore={ this.fetchMoreData }
                         hasMore={ dataDisplay ? dataDisplay.hasMore: false }
                         loader={ <h4>Loading...</h4> }
                         endMessage={ 
