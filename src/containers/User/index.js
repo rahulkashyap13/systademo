@@ -54,6 +54,7 @@ class User extends Component {
 	render() {
         const { postInfo } = this.props.postInfoData;
         const dataDisplay = postInfo; 
+        console.log(dataDisplay)
 		return (
             <>
                 <div className="center-search-box">
@@ -65,10 +66,10 @@ class User extends Component {
                 <div className=" mt-3">
                 <>
                 <InfiniteScroll
-                        dataLength={ 50 }
+                        dataLength={ dataDisplay.totalPost }
                         scrollThreshold="200px"
                         next={ this.fetchMoreData }
-                        hasMore={ false }
+                        hasMore={ dataDisplay.hasMore }
                         loader={ <h4>Loading...</h4> }
                         >
                         {   dataDisplay.postData && dataDisplay.postData.length ?
