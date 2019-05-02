@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
-// import InfiniteScroll from "react-infinite-scroll-component";
 import { connect } from "react-redux";
 import { getPosts } from "./../../store/actions/BlogInfo";
 import { getProfile } from "./../../store/actions/ProfileInfo";
@@ -71,6 +70,7 @@ class User extends Component {
                         next={ this.fetchMoreData }
                         hasMore={ dataDisplay.hasMore }
                         loader={ <h4>Loading...</h4> }
+                        height={ 400 }
                         >
                         {   dataDisplay.postData && dataDisplay.postData.length ?
                             dataDisplay.postData.map((item,index) => {

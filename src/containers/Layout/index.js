@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Navbar, Nav, Container, Row, Col, Form, FormControl, Spinner } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import Header from "./Header";
 import Footer from "./Footer";

@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import Avatar from 'react-avatar';
 import Layout from "./containers/Layout";
 import { Route, Switch } from "react-router-dom";
 import './App.css';
