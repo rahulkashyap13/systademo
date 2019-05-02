@@ -8,15 +8,19 @@ export function getOtherUSers(data) {
     dispatch(request());
     let searchValue = {};
     if(data === "online") {
-        searchValue.status = online;
+        searchValue.status = "online";
     }
     else if(data === "offline") {
-        searchValue.status = offline
+        searchValue.status = "offline"
     } else if(data !== "" && data !== undefined) {
-        searchValue.fullName= data
+      let fullname = "fullName_like";
+        searchValue[ fullname ]  = data;
     } else {
         searchValue = {}
     }
+    console.log("searchValue")
+    console.log(searchValue)
+    console.log("searchValue")
     axios
       .get("http://localhost:3001/otherUser", {
         params: searchValue
