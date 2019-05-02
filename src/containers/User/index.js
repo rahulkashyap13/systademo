@@ -4,7 +4,7 @@ import { Button, Form, FormControl } from 'react-bootstrap';
 import { connect } from "react-redux";
 import { getPosts } from "./../../store/actions/BlogInfo";
 import { getProfile } from "./../../store/actions/ProfileInfo";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroller";
 class User extends Component {
     constructor(props) {
         super(props);
@@ -26,6 +26,11 @@ class User extends Component {
 
     fetchMoreData = () => {
         const pageValue = parseInt(this.state._page) + 1;
+        const data = {
+            _page: pageValue,
+            _limit: this.state._limit,
+        }
+        this.props.postInfo(data);
         this.setState({
             _page: pageValue
         })
@@ -66,9 +71,8 @@ class User extends Component {
                 <div className=" mt-3">
                 <>
                 <InfiniteScroll
-                        dataLength={ dataDisplay.totalPost }
-                        scrollThreshold="200px"
-                        next={ this.fetchMoreData }
+                            pageStart={ 0 }
+                            loadMore={ this.fetchMoreData }
                         hasMore={ dataDisplay.hasMore }
                         loader={ <h4>Loading...</h4> }
                         >

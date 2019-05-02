@@ -8,7 +8,11 @@ export const PostReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.BLOGINFO_REQUEST:
 			return {
-				...state
+				...state,
+				postInfo: {
+					...state.postInfo,
+					hasMore: false
+				}
 			};
 		case actionTypes.BLOGINFO_SUCCESS:
 			return {
