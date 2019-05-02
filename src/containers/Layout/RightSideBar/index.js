@@ -15,14 +15,13 @@ class RightSideBar extends Component {
     return (
         <>
            <RightSideBarPage 
-           otherUerInfo = { otherUerInfo }/>
+           otherUerInfoData = { otherUerInfo }/>
         </>
     );
   }
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         otherUerInfo: state.OtherUserReducer
     };

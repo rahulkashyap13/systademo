@@ -1,7 +1,7 @@
 import { actionTypes } from "./../actions/actionTypes";
 
 const initialState = {
-	OtherUserInfo: {}
+	otherUserInfo: {}
 };
 
 export const OtherUserReducer = (state = initialState, action) => {
@@ -13,9 +13,9 @@ export const OtherUserReducer = (state = initialState, action) => {
 		case actionTypes.OTHERUSER_SUCCESS:
 			return {
 				...state,
-                OtherUserInfo:{
-					...state.OtherUserInfo,
-					...action.OtherUserInfo
+                otherUserInfo:{
+					...state.otherUserInfo,
+					...action.otherUserInfo
 				}
 			};
 		case actionTypes.OTHERUSER_FAILURE:

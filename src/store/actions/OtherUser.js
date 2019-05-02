@@ -21,7 +21,7 @@ export function getOtherUSers(data) {
       .get("http://localhost:3001/otherUser", {
         params: searchValue
       })
-      .then(response => {       
+      .then(response => {    
         dispatch(success(response));
       })
       .catch(error => {        
@@ -37,8 +37,8 @@ export function getOtherUSers(data) {
   function request() {
     return { type: actionTypes.OTHERUSER_REQUEST };
   }
-  function success(OtherUserInfo) {
-    return { type: actionTypes.OTHERUSER_SUCCESS, OtherUserInfo};
+  function success(otherUserInfo) {
+    return { type: actionTypes.OTHERUSER_SUCCESS, otherUserInfo};
   }
   function failure(error) {
     return { type: actionTypes.OTHERUSER_FAILURE, error };

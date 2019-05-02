@@ -55,6 +55,7 @@ class Posts extends Component {
     }
 	render() {        
         const { dataDisplay } = this.props;
+        console.log("dataDisplay.postData");
 		return (
             <>
                 <div className="center-search-box">
