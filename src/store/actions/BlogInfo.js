@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 
 export function getPosts(data) {
   return (dispatch, getState) => {
-      const stateData = getState().PostReducer;
+    const stateData = getState().PostReducer;
     dispatch(request());
     axios
       .get("http://localhost:3001/posts", {

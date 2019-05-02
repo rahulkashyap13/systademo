@@ -4,18 +4,20 @@ import { connect } from "react-redux";
 import RightSideBarPage from "../../../components/RightSideBarPage";
 import { getOtherUSers } from "./../../../store/actions/OtherUser";
 class RightSideBar extends Component {
-    componentDidMount() {
-        this.props.getOtherUser();
-    }
+  componentDidMount() {
+    this.props.getOtherUser();
+  }
+
+  searchFun = (data) => {
+    this.props.getOtherUser(data);
+  }
   render() {
       const { otherUerInfo } = this.props;
-      console.log("otherUerInfo")
-      console.log(otherUerInfo)
-      console.log("otherUerInfo")
     return (
         <>
            <RightSideBarPage 
-           otherUerInfoData = { otherUerInfo }/>
+           otherUerInfoData = { otherUerInfo }
+           onSearchFun = { this.searchFun }/>
         </>
     );
   }
@@ -29,8 +31,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-      getOtherUser: () => {
-        dispatch(getOtherUSers());
+      getOtherUser: (data) => {
+        dispatch(getOtherUSers(data));
       }
     };
   };
