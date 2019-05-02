@@ -10,7 +10,7 @@ class User extends Component {
         super(props);
         this.state = {
             _page: 1,
-            _limit: 19,
+            _limit: 4,
             search: "",
             hasMore: false
         }
