@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Form, FormControl } from 'react-bootstrap';
+import { Button, Form, FormControl, Spinner } from 'react-bootstrap';
 import { connect } from "react-redux";
-import { getPosts } from "./../../store/actions/BlogInfo";
-import { getProfile } from "./../../store/actions/ProfileInfo";
+import { getPosts } from "../../store/actions/BlogInfo";
+import { getProfile } from "../../store/actions/ProfileInfo";
 import InfiniteScroll from "react-infinite-scroller";
-class User extends Component {
+class Posts extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,8 +32,7 @@ class User extends Component {
         this.props.postInfo(data);
         this.setState({
             _page: pageValue
-        })
-       
+        });       
     };
 
     inputHandler = (event) => {
@@ -50,9 +49,8 @@ class User extends Component {
             _limit: 3,
             title: this.state.search,
         }
-        setTimeout(() => {
-            this.props.postInfo(data);         
-        }, 500);
+        console.log(data);
+        this.props.postInfo(data);   
     }
 
 	render() {
@@ -68,12 +66,13 @@ class User extends Component {
                 </div>
                 <div className=" mt-3">
                 <>
-                <InfiniteScroll
-                            pageStart={ 0 }
-                            loadMore={ this.fetchMoreData }
+                <div style={ { "height":"700px","overflow":"auto" } }> 
+                    <InfiniteScroll
+                        pageStart={ 0 }
+                        loadMore={ this.fetchMoreData }
                         hasMore={ dataDisplay.hasMore }
-                        loader={ <h4>Loading...</h4> }
-                        height={ 400 }
+                        loader={ <Spinner animation="border" variant="primary" /> }
+                        useWindow={ false }
                         >
                         {   dataDisplay.postData && dataDisplay.postData.length ?
                             dataDisplay.postData.map((item,index) => {
@@ -85,7 +84,8 @@ class User extends Component {
                             })
                             : null
                         }
-                        </InfiniteScroll>
+                    </InfiniteScroll>
+                    </div>
                 </>               
                 </div>
             </>
@@ -111,4 +111,4 @@ const mapStateToProps = state => {
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(User);
+  )(Posts);

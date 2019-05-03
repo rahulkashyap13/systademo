@@ -28,9 +28,7 @@ class Posts extends Component {
         const data = {
             _page: pageValue,
             _limit: 5,
-        }
-        console.log(data);
-        
+        }        
     };
 
     inputHandler = (event) => {
@@ -41,7 +39,6 @@ class Posts extends Component {
     }
 
     searchFun = () => {
-        console.log(this.state.search);
         this.setState({  _page: 1 });
         const data = {
             _page: 1,
@@ -54,7 +51,6 @@ class Posts extends Component {
     }
 	render() {        
         const { dataDisplay } = this.props;
-        console.log(dataDisplay);
 		return (
             <>
                 <div className="center-search-box">

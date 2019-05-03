@@ -1,8 +1,8 @@
 import React, { Component} from 'react';
 import Layout from "./containers/Layout";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
-import User from "./containers/User";
+import Posts from "./containers/Posts";
 import Login from "./containers/Login";
 import EditUser from "./containers/EditUser";
 
@@ -23,9 +23,11 @@ class App extends Component {
 	render() {
 		return (
 			<Switch>
+				
 				<Route path="/login" component={ Login } />
-				<DefaultLayout exact path="/:userName" layout={ Layout } component={ User } />
+				<DefaultLayout exact path="/:userName" layout={ Layout } component={ Posts } />
 				<DefaultLayout path="/:userName/edit" layout={ Layout } component={ EditUser } />
+				<Redirect to="/login" />
 			</Switch>
 		);
 	}

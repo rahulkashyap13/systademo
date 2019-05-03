@@ -13,14 +13,11 @@ export function getOtherUSers(data) {
     else if(data === "offline") {
         searchValue.status = "offline"
     } else if(data !== "" && data !== undefined) {
-      let fullname = "fullName_like";
+      const fullname = "fullName_like";
         searchValue[ fullname ]  = data;
     } else {
         searchValue = {}
     }
-    console.log("searchValue")
-    console.log(searchValue)
-    console.log("searchValue")
     axios
       .get("http://localhost:3001/otherUser", {
         params: searchValue

@@ -37,7 +37,6 @@ const mapStateToProps = state => {
   const mapDispatchToProps = dispatch => {
     return {
       updateDataFun: userData => {
-		  console.log("working");
         dispatch(updateProfilfun(userData));
       },
       getProfile: () => {
