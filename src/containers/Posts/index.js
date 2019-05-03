@@ -20,14 +20,18 @@ class Posts extends Component {
             _limit: this.state._limit,
         }
         this.props.postInfo(data);
-        this.props.getProfile(data);
+        this.props.getProfile();
     }
 
     fetchMoreData = () => {
         const pageValue = parseInt(this.state._page) + 1;
         const data = {
-            _page: pageValue,
-            _limit: this.state._limit,
+          _page: pageValue,
+          _limit: this.state._limit
+        };
+       if(this.state.search !== "") {
+            const titleSearch = "title_like";
+            data[ titleSearch ] = this.state.search;
         }
         this.props.postInfo(data);
         this.setState({
@@ -44,12 +48,15 @@ class Posts extends Component {
 
     searchFun = () => {
         this.setState({  _page: 1 });
+
         const data = {
             _page: 1,
-            _limit: 3,
-            title: this.state.search,
+            _limit: 3
         }
-        console.log(data);
+        if(this.state.search !== "") {
+            const titleSearch = "title_like";
+            data[ titleSearch ] = this.state.search;
+        }
         this.props.postInfo(data);   
     }
 
@@ -60,9 +67,10 @@ class Posts extends Component {
             <>
                 <div className="center-search-box">
                     <Form inline>
-                        <FormControl type="text" name="search" onChange={ this.inputHandler } placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success" onClick={ this.searchFun }>Search</Button>
-                    </Form>						
+                        <FormControl type="text" name="search" onChange={ this.inputHandler } placeholder="Search By Name" className="mr-sm-2" />
+                        <Button variant="primary" onClick={ this.searchFun }>Search</Button>
+                    </Form>
+                    <br/>				
                 </div>
                 <div className=" mt-3">
                 <>

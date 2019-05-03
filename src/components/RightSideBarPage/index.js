@@ -25,7 +25,7 @@ class RightSideBarPage extends Component {
         <div className="mt-3">
             <Form inline>
                 <FormControl type="text" placeholder="Search" onChange ={ this.changeHandler } className="mr-sm-2 width-75" maxLength="50" />                
-                <Button variant="outline-success" onClick= { this.searchData }>Search</Button>
+                <Button variant="primary" onClick= { this.searchData }>Search</Button>
                 <p>Search By Status online/offline Or Name</p>
             </Form>
             <Row className="mt-4 text-center">

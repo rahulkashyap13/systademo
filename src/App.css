@@ -1,5 +1,5 @@
 .box-border {
-  border: 1px solid rgba(129,129,129,.2);
+  border: 1px solid rgb(216, 228, 255);
 }
 
 .center-search-box {
@@ -65,4 +65,14 @@
   margin-bottom: 0px;
   border-bottom: 1px solid #eee;
   border-top: 1px solid #eee;
+}
+
+.back-wrap {
+  color: white;
+  background: #426de1!important;
+  font-weight: bold;
+}
+
+a.text-uppercase.navbar-brand {
+    color: white;
 }

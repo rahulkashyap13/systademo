@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { actionTypes } from './actionTypes';
 import { push } from 'react-router-redux';
-
+import { AppConfig } from "../../constant/AppConfig";
 export function getOtherUSers(data) {
   return (dispatch, getState) => {
       const stateData = getState().PostReducer;
@@ -19,16 +19,16 @@ export function getOtherUSers(data) {
         searchValue = {}
     }
     axios
-      .get("http://localhost:3001/otherUser", {
+      .get(AppConfig.API_ENDPOINT + "/otherUser", {
         params: searchValue
       })
-      .then(response => {    
+      .then(response => {
         dispatch(success(response));
       })
-      .catch(error => {        
+      .catch(error => {
         if (error.response && error.response.data.responseCode === 401) {
-          localStorage.removeItem('user');
-          dispatch(push('/login'));
+          localStorage.removeItem("user");
+          dispatch(push("/login"));
           return;
         }
         const errorData = error.response ? error.response.data : error;

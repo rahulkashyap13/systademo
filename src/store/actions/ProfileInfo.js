@@ -1,19 +1,19 @@
 import axios from 'axios';
 import { actionTypes } from './actionTypes';
 import { push } from 'react-router-redux';
-
+import { AppConfig } from "../../constant/AppConfig";
 export function getProfile() {
   return dispatch => {
     dispatch(request());
     axios
-      .get("http://localhost:3001/user/")
+      .get(AppConfig.API_ENDPOINT + "/user/")
       .then(response => {
         dispatch(success(response.data));
       })
       .catch(error => {
         if (error.response && error.response.data.responseCode === 401) {
-          localStorage.removeItem('user');
-          dispatch(push('/'));
+          localStorage.removeItem("user");
+          dispatch(push("/"));
           return;
         }
         const errorData = error.response ? error.response.data : error;

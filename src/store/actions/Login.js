@@ -2,28 +2,27 @@ import { push } from "react-router-redux";
 import { actionTypes } from "./actionTypes";
 import { toastr } from "react-redux-toastr";
 import axios from "axios";
-
+import { AppConfig } from "../../constant/AppConfig";
 export function login(data) {
   return dispatch => {
     dispatch(request({ data }));
     axios
-      .get("http://localhost:3001/user/")
+      .get(AppConfig.API_ENDPOINT + "/user/")
       .then(response => {
         const responseData = response.data;
-        if(responseData.email !== data.email) {
+        if (responseData.email !== data.email) {
           toastr.error("Error", "Email id not exist.");
-        } else if(responseData.password !== data.password) {
+        } else if (responseData.password !== data.password) {
           toastr.error("Error", "Password is not valid.");
-        }
-        else {
+        } else {
           const authData = {
             token: responseData.userName
           };
           localStorage.setItem("user", JSON.stringify(authData));
           toastr.success("Success", "Successfully Login");
           dispatch(success(authData));
-          dispatch(push("/"+responseData.userName));
-        }       
+          dispatch(push("/" + responseData.userName));
+        }
       })
       .catch(error => {
         const errorData = error.response ? error.response.data : error;

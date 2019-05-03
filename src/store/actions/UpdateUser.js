@@ -2,19 +2,21 @@ import axios from 'axios';
 import { actionTypes } from './actionTypes';
 import { push } from 'react-router-redux';
 import { toastr } from "react-redux-toastr";
+import { AppConfig } from "../../constant/AppConfig";
+
 export function updateProfilfun(data) {
   return dispatch => {
     dispatch(request());
     axios
-      .put("http://localhost:3001/user/", data)
+      .put(AppConfig.API_ENDPOINT + "/user/", data)
       .then(response => {
         dispatch(success(response.data));
         toastr.success("Success", "Data Updated Successfuly");
       })
       .catch(error => {
         if (error.response && error.response.data.responseCode === 401) {
-          localStorage.removeItem('user');
-          dispatch(push('/'));
+          localStorage.removeItem("user");
+          dispatch(push("/"));
           return;
         }
         const errorData = error.response ? error.response.data : error;

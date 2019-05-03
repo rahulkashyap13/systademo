@@ -34,12 +34,12 @@ class Header extends Component {
   render() {
     const { userName } = this.state;
     return (
-      <Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light" className="back-wrap">
         <Navbar.Brand href="#home" className="text-uppercase">{ userName }</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            <Button variant="outline-success" onClick={ this.logOut }>Logout</Button>
+            <Button variant="primary" onClick={ this.logOut }>Logout</Button>
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>	
